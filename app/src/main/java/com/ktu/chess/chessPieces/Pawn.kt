@@ -28,15 +28,19 @@ class Pawn(
                     firstMove = false
                 }
             }
-            var squareData = boardData[x-1][y+1]
+
             if (x > 0) {
-              if (squareData.content != null && squareData.content!!.team != team) {
-                  take.add(squareData)
-              }
+                val squareData = boardData[x-1][y+1]
+                if (squareData.content != null && squareData.content!!.team != team) {
+                    take.add(squareData)
+                }
             }
-            squareData = boardData[x+1][y+1]
-            if (x < board.length-1 && squareData.content != null && squareData.content!!.team != team) {
-                take.add(squareData)
+
+            if (x < board.length-1) {
+                val squareData = boardData[x+1][y+1]
+                if (squareData.content != null && squareData.content!!.team != team) {
+                    take.add(squareData)
+                }
             }
         } else {
             if (boardData[x][y-1].content == null) {
